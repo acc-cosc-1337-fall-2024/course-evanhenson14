@@ -21,8 +21,8 @@ int main()
 
 		while(!game.game_over())
 		{
-			cout<<"Enter a position: "
-			cin>>position:
+			cout<<"Enter a position: ";
+			cin>>position;
 			game.mark_board(position);
 			game.display_board();
 		}
@@ -30,7 +30,7 @@ int main()
 		cout<<"Play again, enter y or Y? ";
 		cin>>user_choice;
 
-	}while(user_choice == 'y' || user_choice == (Y));
+	}while(user_choice == 'y' || user_choice == "Y");
 
 	return 0;
 }

@@ -58,11 +58,11 @@ void TicTacToe:: set_next_player()
 
 bool TicTacToe::check_board_full()
 {
-    for(int i=0; 0 < pegs.size(); i++)
+    for (size_t i = 0; i < pegs.size(); i++) 
     {
-        if(long unsigned int pegs[i] == " ")
+        if (pegs[i] == " ") 
         {
-            return false;
+            return false; 
         }
     }
 
