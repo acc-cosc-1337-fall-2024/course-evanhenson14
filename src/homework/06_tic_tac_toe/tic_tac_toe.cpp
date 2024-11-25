@@ -5,7 +5,7 @@ using std::cout;
 
 bool TicTacToe::game_over()
 {
-    return check_board_full;
+    return check_board_full();
 }
 
 void TicTacToe::start_game(std::string first_player)
@@ -58,11 +58,11 @@ void TicTacToe:: set_next_player()
 
 bool TicTacToe::check_board_full()
 {
-    for (size_t i = 0; i < pegs.size(); i++) 
+    for(int i=0; i < pegs.size(); i++)
     {
-        if (pegs[i] == " ") 
+        if(pegs[i] == " ")
         {
-            return false; 
+            return false;
         }
     }
 
