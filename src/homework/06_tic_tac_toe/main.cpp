@@ -1,5 +1,6 @@
 //main
 #include "tic_tac_toe.h"
+#include "tic_tac_toe_manager.h"
 #include <iostream>
 
 using std::cin;
@@ -7,11 +8,12 @@ using std::cout;
 using std::string;
 
 int main() {
-    TicTacToe game;
+    TicTacToeManager manager;
     string first_player;
     char user_choice;
 
     do {
+        TicTacToe game;
         cout << "Enter first player (X or O): ";
         cin >> first_player;
 
@@ -22,23 +24,23 @@ int main() {
 
         game.start_game(first_player);
 
-        int position;
-
         while (!game.game_over()) {
-            game.display_board();
-            cout << "Enter a position (1-9): ";
-            cin >> position;
-
-            while (position < 1 || position > 9 || game.get_player() == " ") {
-                cout << "Invalid position. Choose another (1-9): ";
-                cin >> position;
-            }
-
-            game.mark_board(position);
+            cout << game;
+            cin >> game; // Use overloaded istream operator
         }
 
-        game.display_board();
+        cout << game; // Use overloaded ostream operator
         cout << "Game over! Winner: " << game.get_winner() << "\n";
+
+        manager.save_game(game); // Save game to manager
+
+        int x_wins, o_wins, ties;
+        manager.get_winner_total(x_wins, o_wins, ties);
+
+        cout << "Scores:\n";
+        cout << "X wins: " << x_wins << "\n";
+        cout << "O wins: " << o_wins << "\n";
+        cout << "Ties: " << ties << "\n";
 
         cout << "Play again? Enter y or Y to continue, or any other key to quit: ";
         cin >> user_choice;
@@ -47,3 +49,4 @@ int main() {
 
     return 0;
 }
+

@@ -74,6 +74,21 @@ bool TicTacToe::check_diagonal_win() {
            (pegs[2] != " " && pegs[2] == pegs[4] && pegs[2] == pegs[6]);
 }
 
+std::istream& operator>>(std::istream& in, TicTacToe& game) {
+    int position;
+    cout << "Enter a position (1-9): ";
+    in >> position;
+    game.mark_board(position);
+    return in;
+}
+
+std::ostream& operator<<(std::ostream& out, const TicTacToe& game) {
+    for (size_t i = 0; i < game.pegs.size(); i += 3) {
+        out << game.pegs[i] << "|" << game.pegs[i + 1] << "|" << game.pegs[i + 2] << "\n";
+    }
+    return out;
+}
+
 void TicTacToe::set_winner() {
     winner = player;
 }
